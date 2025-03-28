@@ -82,6 +82,7 @@ variable "vms" {
     subnet_id                          = string
     security_group_egress_ranges       = optional(map(list(string)))
     security_group_ingress_ranges      = optional(map(list(string)))
+    source_image_reference             = optional(map(list(string)))
   }))
   description = "Virtual machine configurations"
 }
