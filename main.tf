@@ -54,7 +54,8 @@ module "cvm" {
   resource_group = var.resource_group
 
   vm_name                            = each.key
-  source_image_id                    = azurerm_shared_image_version.this[each.value.image_version].id
+  source_image_id                    = var.source_image_reference != null? null : azurerm_shared_image_version.this[each.value.image_version].id
+  source_image_reference             = var.source_image_reference
   vm_size                            = each.value.size
   vm_secure_boot_enabled             = each.value.secure_boot_enabled
   vm_vtpm_enabled                    = each.value.vtpm_enabled
