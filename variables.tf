@@ -63,7 +63,10 @@ variable "image_version_blob_storage_uris" {
     uri           = string
   }))
   description = "List of image versions and their corresponding blob storage URIs for VM images"
-  default = null
+  default = {
+    image_version = ""
+    uri           = ""
+  }
 }
 
 variable "vms" {
