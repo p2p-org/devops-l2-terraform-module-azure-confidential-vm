@@ -29,6 +29,7 @@ resource "azurerm_shared_image" "this" {
 }
 
 resource "azurerm_shared_image_version" "this" {
+  count = length(var.image_version_blob_storage_uris) > 0 ? 1 : 0
   for_each            = { for item in var.image_version_blob_storage_uris : item.image_version => item }
   name                = each.key
   gallery_name        = azurerm_shared_image_gallery.this.name
