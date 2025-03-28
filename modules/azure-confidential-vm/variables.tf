@@ -8,6 +8,11 @@ variable "resource_group" {
   description = "The name of the Azure resource group where all resources will be deployed"
 }
 
+variable "source_image_reference" {
+  type    = map(any)
+  default = null
+}
+
 variable "source_image_id" {
   type        = string
   description = "Resource ID of the shared image version to use for the VM"

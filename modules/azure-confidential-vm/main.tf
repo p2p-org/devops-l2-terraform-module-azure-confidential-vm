@@ -22,6 +22,16 @@ resource "azurerm_linux_virtual_machine" "cvm" {
     security_encryption_type = "VMGuestStateOnly"
   }
 
+dynamic "source_image_reference" {
+    for_each = var.source_image_reference != null ? [1] : []
+    content {
+      offer     = lookup(var.source_image_reference, "offer", null)
+      sku       = lookup(var.source_image_reference, "sku", null)
+      publisher = lookup(var.source_image_reference, "publisher", null)
+      version   = lookup(var.source_image_reference, "version", null)
+    }
+  }
+
   source_image_id = var.source_image_id
 }
 
